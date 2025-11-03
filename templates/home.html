@@ -9,14 +9,23 @@ HOME 🏠
     {% if user.is_authenticated %}
         Hola {{ user.username }}
 
+        {% if user.is_superuser %}
+            <h1>Eres super usuario</h1>
+        {% else %}
+            <h1>Eres usuario básico</h1>
+        {% endif %}
+
         <form action="{% url 'logout' %}" method="post">
             {% csrf_token %}
             <button type="submit">Log out</button>
         </form>
 
+        <a href="{% url 'password_change' %}">Cambiar contraseña</a>
+
     {% else %}
         <h1>No estas logeado</h1>
         <a href="{% url 'login' %}">Log in</a>
+        <a href="{% url 'password_reset' %}">Resetear contraseña</a>
     {% endif %}
 
 {% endblock %}
