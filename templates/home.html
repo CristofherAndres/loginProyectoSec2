@@ -15,10 +15,7 @@ HOME 🏠
             <h1>Eres usuario básico</h1>
         {% endif %}
 
-        <form action="{% url 'logout' %}" method="post">
-            {% csrf_token %}
-            <button type="submit">Log out</button>
-        </form>
+
 
         <a href="{% url 'password_change' %}">Cambiar contraseña</a>
 
